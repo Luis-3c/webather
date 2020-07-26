@@ -1,0 +1,56 @@
+.weatherInfo {
+    background: linear-gradient(rgb(74, 172, 134), rgb(31, 117, 71));
+    border-radius: 4px;
+    position: absolute;
+    margin: 1% 0 0 0;
+    box-shadow: 3px 3px 15px 5px #22222298;
+    padding-bottom: 2%;
+}
+
+.weatherInfo h4 {/* 
+    background-color: tomato; */
+    text-align: center;
+    margin-top: 3%;
+}
+
+.temp {/* 
+    background-color: turquoise; */
+    height: 30%;
+    display: flex;
+    justify-content: center;
+}
+
+.temp .number{/* 
+    background-color: violet; */
+    height: 100%;
+    font-size: 90px;
+    text-align: right;
+}
+
+.temp .wicon{/* 
+    background-color: yellow; */
+    width: 20%;
+    display: flex;
+    align-items: center;
+}
+
+
+.today {/* 
+    background-color: tomato; */
+    display: flex;
+    justify-content: center;
+}
+
+.wdesc {
+    text-align: center;
+}
+
+.wdetail .col-sm-4 {/* 
+    background-color: tomato; */
+    padding: 2%;
+    text-align: center;
+}
+
+.borderRight {
+    border-right: solid 1px white;
+}

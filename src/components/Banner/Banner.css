@@ -1,0 +1,15 @@
+.banner {
+    background-color: rgb(9, 44, 54);
+    color: white;
+    height: 40vh;
+    padding-top: 2%;
+}
+
+.recentSearches {
+    width: 70%;
+    margin: 0 auto 0 auto;
+}
+
+.recentSearches h5 {
+    text-align: center;
+}

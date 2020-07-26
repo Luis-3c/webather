@@ -1,0 +1,44 @@
+.navbar{
+    background-color: rgb(9, 44, 54);
+    color:white;
+}
+
+
+.form-inline .form-control {
+    background-color: rgb(9, 44, 54);
+    border-color: turquoise;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    color: white;
+}
+
+.form-inline .btn {
+    background-color: turquoise;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/*---------- search results -----------*/
+
+.searchResults {
+    position: absolute;
+    margin-right: auto;
+    width: 100%;
+    top: 53px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.results {
+    padding: 1%;
+    color: rgb(4, 82, 82);
+    background-color: rgb(222, 238, 235);
+    text-align: left;
+    z-index: 900;
+}
+
+.results p:hover {
+    background-color: rgb(25, 44, 48);
+    color: white;
+    padding: 0 2% 0 2%;
+}
