@@ -7,16 +7,25 @@ import Truncate from '../../hooks/useTruncate';
 
 const WeatherInfo = (props) => {
 	const data = MYHook(props.woeid, props.searchesList, props.setSearchesList);
+	//useUpdateList(data);
 
-	/* useEffect(
-		() => {
-			if (searchesList.length === 4) searchesList.splice(0, 1);
-			setSearchesList(...searchesList, data);
-			console.log(data);
-		},
-		[ data ]
-	);
- */
+	/* function useUpdateList(data) {
+		useEffect(
+			() => {
+				console.log(data)
+				if(props.searchesList.length > 1){
+					if (props.searchesList.length === 4) props.searchesList.splice(0, 1);
+					props.setSearchesList(...props.searchesList, data);
+					console.log(data);
+				}else {
+					props.setSearchesList(...props.searchesList, data);
+				}
+					
+			},
+			[ data ]
+		);
+	} */
+
 	return (
 		<div
 			className="row"
