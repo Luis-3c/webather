@@ -16,7 +16,7 @@ const SearchResults = (props) => {
                     props.setResults([]);
                 }
             }
-    
+
             // Bind the event listener
             document.addEventListener("mousedown", handleClickOutside);
             return () => {
@@ -36,7 +36,7 @@ const SearchResults = (props) => {
                     <Link to={`/city/${r.woeid}`} key={r.title} style={{
                         textDecoration: 'none'
                     }}>
-                        <p>{r.title}</p>
+                        <p onClick={()=>props.setResults([])}>{r.title}</p>
                     </Link>
                     );
                 })}

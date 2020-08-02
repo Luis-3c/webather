@@ -2,40 +2,21 @@ import React from 'react';
 import './WeatherInfo.css';
 import NextDays from '../NextDays/NextDays';
 import Wicon from '../Wicon/Wicon';
-import Wservice from '../Services/WeatherService';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import MYHook from '../../hooks/useWeatherData';
+import Truncate from '../../hooks/useTruncate';
 
 const WeatherInfo = (props) => {
-	const [ data, setData ] = useState([]);
+	const data = MYHook(props.woeid, props.searchesList, props.setSearchesList);
 
-	function updateList(res){
-		if (props.searchesList.length === 4){
-			console.log('entra: ')
-			props.searchesList.splice(0,1);
-		}
-		console.log('tamaño: ', props.searchesList.length)
-		props.setSearchesList([...props.searchesList, res])
-	}
-	useEffect(
+	/* useEffect(
 		() => {
-			Wservice.getCityData(props.woeid)
-				.then((res) => {
-					setData([ res.data ]);
-					//props.setSearchesList([...props.searchesList, res.data]);
-					updateList(res.data);
-				})
-				.catch((e) => {
-					console.log(e);
-				});
+			if (searchesList.length === 4) searchesList.splice(0, 1);
+			setSearchesList(...searchesList, data);
+			console.log(data);
 		},
-		[ props.woeid ]
+		[ data ]
 	);
-
-	function truncate(n) {
-		return n.toString().substring(0, 2);
-	}
-
+ */
 	return (
 		<div
 			className="row"
@@ -53,7 +34,9 @@ const WeatherInfo = (props) => {
 							<React.Fragment key={d.woeid}>
 								<h4>{d.title}</h4>
 								<section className="temp">
-									<section className="number">{truncate(d.consolidated_weather[0].the_temp)}°</section>
+									<section className="number">
+										{Truncate(d.consolidated_weather[0].the_temp)}°
+									</section>
 									<section className="wicon">
 										<Wicon
 											width="70%"
@@ -64,12 +47,16 @@ const WeatherInfo = (props) => {
 									</section>
 								</section>
 								<div className="row wdesc">
-						<div className="col-sm-12">{d.consolidated_weather[0].weather_state_name}</div>
+									<div className="col-sm-12">{d.consolidated_weather[0].weather_state_name}</div>
 								</div>
 								<div className="row today mt-3">
 									<div className="col-3 col-sm-3">Today</div>
-									<div className="col-2 col-sm-2">{truncate(d.consolidated_weather[0].max_temp)}°</div>
-									<div className="col-2 col-sm-2">{truncate(d.consolidated_weather[0].min_temp)}°</div>
+									<div className="col-2 col-sm-2">
+										{Truncate(d.consolidated_weather[0].max_temp)}°
+									</div>
+									<div className="col-2 col-sm-2">
+										{Truncate(d.consolidated_weather[0].min_temp)}°
+									</div>
 								</div>
 								<div className="row wdetail mt-3">
 									<div className="col-sm-4 borderRight">
@@ -78,7 +65,7 @@ const WeatherInfo = (props) => {
 									</div>
 									<div className="col-sm-4 borderRight">
 										<p>Wind</p>
-										<p>{truncate(d.consolidated_weather[0].wind_speed)} km/h</p>
+										<p>{Truncate(d.consolidated_weather[0].wind_speed)} km/h</p>
 									</div>
 									<div className="col-sm-4">
 										<p>Humidity</p>
@@ -86,11 +73,11 @@ const WeatherInfo = (props) => {
 									</div>
 								</div>
 								<br />
-								<NextDays data={d.consolidated_weather[1]} truncate={truncate}/>
-								<NextDays data={d.consolidated_weather[2]} truncate={truncate}/>
-								<NextDays data={d.consolidated_weather[3]} truncate={truncate}/>
-								<NextDays data={d.consolidated_weather[4]} truncate={truncate}/>
-								<NextDays data={d.consolidated_weather[5]} truncate={truncate}/>
+								<NextDays data={d.consolidated_weather[1]} />
+								<NextDays data={d.consolidated_weather[2]} />
+								<NextDays data={d.consolidated_weather[3]} />
+								<NextDays data={d.consolidated_weather[4]} />
+								<NextDays data={d.consolidated_weather[5]} />
 							</React.Fragment>
 						);
 					})

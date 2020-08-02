@@ -5,6 +5,7 @@ import './Banner.css';
 
 const Banner = (props) => {
 	const [ searchesList, setSearchesList ] = useState([]);
+
 	return (
 		<div className="banner">
 			<div className="recentSearches">

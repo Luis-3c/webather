@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchResults from '../SearchResults/SearchResults';
-import Wservice from '../Services/WeatherService';
+import Wservice from '../../Services/WeatherService';
 import './Navbar.css';
 import { useState } from 'react';
 import Loader from '../Loader/Loader';
@@ -10,6 +10,7 @@ const Navbar = () => {
 	const [ results, setResults ] = useState([]);
 	const [ loading, setLoading ] = useState(false);
 
+	// se dispara la búsqueda 
 	function handleChange(e) {
 		setSearchText(e.target.value);
 		if (searchText.length >= 3) {

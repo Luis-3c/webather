@@ -1,6 +1,7 @@
 import React from 'react';
 import Wicon from '../Wicon/Wicon';
 import moment from 'moment';
+import Truncate from '../../hooks/useTruncate';
 
 const NextDays = (props) => {
 	return (
@@ -13,8 +14,8 @@ const NextDays = (props) => {
 					url={`https://www.metaweather.com/static/img/weather/${props.data.weather_state_abbr}.svg`}
 				/>
 			</div>
-			<div className="col-sm-2">{props.truncate(props.data.max_temp)}°</div>
-			<div className="col-sm-1">{props.truncate(props.data.min_temp)}°</div>
+			<div className="col-sm-2">{Truncate(props.data.max_temp)}°</div>
+			<div className="col-sm-1">{Truncate(props.data.min_temp)}°</div>
 		</div>
 	);
 };
