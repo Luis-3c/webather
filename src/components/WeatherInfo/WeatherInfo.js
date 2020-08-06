@@ -1,30 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './WeatherInfo.css';
 import NextDays from '../NextDays/NextDays';
 import Wicon from '../Wicon/Wicon';
-import MYHook from '../../hooks/useWeatherData';
 import Truncate from '../../hooks/useTruncate';
+import Wservice from '../../Services/WeatherService';
+import Loader from '../Loader/Loader';
 
-const WeatherInfo = (props) => {
-	const data = MYHook(props.woeid, props.searchesList, props.setSearchesList);
-	//useUpdateList(data);
 
-	/* function useUpdateList(data) {
-		useEffect(
-			() => {
-				console.log(data)
-				if(props.searchesList.length > 1){
-					if (props.searchesList.length === 4) props.searchesList.splice(0, 1);
-					props.setSearchesList(...props.searchesList, data);
-					console.log(data);
-				}else {
-					props.setSearchesList(...props.searchesList, data);
-				}
-					
-			},
-			[ data ]
-		);
-	} */
+const WeatherInfo = ({woeid, setSearchesList}) => {
+	const [ data, setData ] = useState([]);
+	const [ loading, setLoading] = useState(false);
+	
+	useEffect(
+		() => {
+			setLoading(true);
+			Wservice.getCityData(woeid)
+				.then((res) => {
+					setData([ res.data ]);
+					setSearchesList(prevData => {
+						if(prevData.length === 4 ) prevData.splice(0,1);
+						return [...prevData, res.data];
+					});
+					setLoading(false);
+				})
+				.catch((e) => {
+					console.log(e);
+					setLoading(false);
+				});
+		},
+		[woeid, setSearchesList]
+	);
 
 	return (
 		<div
@@ -35,8 +40,10 @@ const WeatherInfo = (props) => {
 			}}
 		>
 			<div className=" col-10 col-sm-4 weatherInfo">
-				{data.length <= 0 ? (
-					<p>Loading...</p>
+				{loading ? (
+					<div className="loader-cont">
+						<Loader/>
+					</div>
 				) : (
 					data.map((d) => {
 						return (

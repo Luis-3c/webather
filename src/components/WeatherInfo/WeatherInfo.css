@@ -54,3 +54,8 @@
 .borderRight {
     border-right: solid 1px white;
 }
+
+.loader-cont {
+    width: 14%;
+    margin: 2% auto 2% auto;
+}
