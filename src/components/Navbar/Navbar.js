@@ -6,11 +6,11 @@ import { useState } from 'react';
 import Loader from '../Loader/Loader';
 
 const Navbar = () => {
-	const [ searchText, setSearchText ] = useState('');
-	const [ results, setResults ] = useState([]);
-	const [ loading, setLoading ] = useState(false);
+	const [searchText, setSearchText] = useState('');
+	const [results, setResults] = useState([]);
+	const [loading, setLoading] = useState(false);
 
-	// se dispara la búsqueda 
+	// se dispara la búsqueda
 	function handleChange(e) {
 		setSearchText(e.target.value);
 		if (searchText.length >= 3) {
@@ -40,26 +40,26 @@ const Navbar = () => {
 	}
 	return (
 		<nav className="navbar justify-content-between">
-			<label className="navbar-brand" style={{
-				marginLeft: '17%'
-			}}>Webather</label>
-			<form className="form-inline ml-auto" onSubmit={handleSubmit} style={{
-				marginRight: '15%'
-			}}>
-				<input
-					className="form-control "
-					name="searchText"
-					type="search"
-					placeholder="Search"
-					aria-label="Search"
-					onChange={handleChange}
-				/>
-				<button className="btn my-2 my-sm-0 mr-3" type="submit">
-                <i className="fa fa-search" aria-hidden="true"></i>
-				</button>
-				{loading && <Loader />}
-                {results.length > 0 && <SearchResults results={results} setResults={setResults} />}
-			</form>
+			<section className='navbar-content row'>
+				<div className='col-4 logo'>Webather</div>
+				<div className='col-8'>
+					<form className="form-inline" onSubmit={handleSubmit}>
+						<input
+							className="form-control "
+							name="searchText"
+							type="search"
+							placeholder="Search"
+							aria-label="Search"
+							onChange={handleChange}
+						/>
+						<button className="btn" type="submit">
+							<i className="fa fa-search" aria-hidden="true"></i>
+						</button>
+						{loading && <Loader />}
+						{results.length > 0 && <SearchResults results={results} setResults={setResults} />}
+					</form>
+				</div>
+			</section>
 		</nav>
 	);
 };

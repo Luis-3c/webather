@@ -1,15 +1,34 @@
+:root {
+    --main-width: 95%;
+}
+
 .navbar{
     background-color: rgb(9, 44, 54);
     color:white;
 }
 
+.navbar-content{
+    margin: 0 auto 0 auto;
+    width: var(--main-width);
+}
 
+.logo{
+    align-items: center;
+    display: flex;
+    font-size: 1.25rem;
+}
+
+.form-inline {
+    display: flex;
+    justify-content: end;
+}
 .form-inline .form-control {
     background-color: rgb(9, 44, 54);
     border-color: turquoise;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     color: white;
+    width: 75%
 }
 
 .form-inline .btn {
@@ -41,4 +60,12 @@
     background-color: rgb(25, 44, 48);
     color: white;
     padding: 0 2% 0 2%;
+}
+
+/*---------- Media Queries -------------*/
+
+@media (min-width: 577px) {
+    :root {
+        --main-width: 70%;
+    }
 }
