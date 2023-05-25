@@ -8,6 +8,7 @@ function App() {
 			<BrowserRouter>
 			<Navbar />
 				<Switch>
+					<Route exact path="/" component={Banner} />
 					<Route exact path="/city/:woeid" component={Banner} />
 				</Switch>
 			</BrowserRouter>

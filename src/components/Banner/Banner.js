@@ -9,7 +9,7 @@ const Banner = (props) => {
 	return (
 		<div className="banner">
 			<div className="recentSearches">
-				<div className="row">
+				{/* <div className="row">
 					{searchesList.map((l) => {
 						return (
 							<div className="col-6 col-sm-3" key={l.woeid}>
@@ -21,7 +21,7 @@ const Banner = (props) => {
 							</div>
 						);
 					})}
-				</div>
+				</div> */}
 			</div>
 			<WeatherInfo
 				woeid={props.match.params.woeid}

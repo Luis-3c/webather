@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const ENDPOINT = " https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/";
+const APIKEY = "bfa1ede84622419da8d30636232904";
+const ENDPOINT = "https://api.weatherapi.com/v1/";
 
 const config = {
     headers: {
@@ -9,10 +10,11 @@ const config = {
 }
 const api = {
     search(text){
-        return axios.get(ENDPOINT + 'search/?query='+text, config);
+        return axios.get(ENDPOINT + `search.json?q=${text}&key=${APIKEY}`, config);
     },
     getCityData(woeid){
-        return axios.get(ENDPOINT + 'location/' + woeid, config);
+        console.log('WOEEIDD: ', woeid)
+        return axios.get(ENDPOINT + `forecast.json?q=${woeid}&aqi=no&days=1&key=${APIKEY}`, config);
     }
 }
 

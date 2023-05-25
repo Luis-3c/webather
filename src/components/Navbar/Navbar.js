@@ -2,42 +2,63 @@ import React from 'react';
 import SearchResults from '../SearchResults/SearchResults';
 import Wservice from '../../Services/WeatherService';
 import './Navbar.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Loader from '../Loader/Loader';
 
 const Navbar = () => {
 	const [searchText, setSearchText] = useState('');
 	const [results, setResults] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const searchInProgress = useRef(false);
+	const showList = useRef();
+	//const [searchInProgress, setsearchInProgress] = useState(false);
 
 	// se dispara la búsqueda
-	function handleChange(e) {
+	const handleChange = (e) => {
 		setSearchText(e.target.value);
 		if (searchText.length >= 3) {
-			setTimeout(() => {
-				search();
-			}, 2000);
+			if(!searchInProgress.current){
+				searchInProgress.current = true;
+			}else{
+				searchInProgress.current = false;
+			}
+			searchTimeOut();
 		}
 	}
 
-	function handleSubmit(e) {
+	const searchTimeOut = () => {
+		setTimeout(() => {
+			if(searchInProgress.current){
+				search();				
+			}else searchInProgress.current = true;
+		}, 2000)
+	}
+
+	const handleSubmit = (e) => {
 		e.preventDefault();
 	}
-	function search() {
+
+	const search = () => {
 		if (!loading) {
 			setLoading(true);
 			Wservice.search(searchText)
 				.then((res) => {
 					setResults(res.data);
 					setLoading(false);
+					searchInProgress.current = false;
 					console.log(res.data);
+					setTimeout(() => {
+						showList.current.click()
+					}, 3000);
 				})
 				.catch((e) => {
 					console.log(e);
+					searchInProgress.current = false;
 					setLoading(false);
 				});
 		}
 	}
+	
 	return (
 		<nav className="navbar justify-content-between">
 			<section className='navbar-content row'>
@@ -47,16 +68,24 @@ const Navbar = () => {
 						<input
 							className="form-control "
 							name="searchText"
-							type="search"
 							placeholder="Search"
 							aria-label="Search"
 							onChange={handleChange}
+							autoComplete='off'
+							disabled={loading}
+							list='autocomplete-list'
+							ref={showList}
 						/>
 						<button className="btn" type="submit">
 							<i className="fa fa-search" aria-hidden="true"></i>
 						</button>
 						{loading && <Loader />}
-						{results.length > 0 && <SearchResults results={results} setResults={setResults} />}
+						{/* {results.length > 0 && <SearchResults results={results} setResults={setResults} />} */}
+						<datalist id="autocomplete-list">
+							{results.map((r) => (
+							<option key={1} value={r.name} />
+							))}
+						</datalist>
 					</form>
 				</div>
 			</section>

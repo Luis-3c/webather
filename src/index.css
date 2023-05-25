@@ -1,4 +1,5 @@
 body {
+  background-color: #e9e9e9;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -10,4 +11,8 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+:root {
+  --url: url('https://lh3.googleusercontent.com/3q4GCIejFpPrssefMUyPxl2iYFJSnc52As_0b9f9Ba5oAOxjrqK1CFbnoInEP-0Vz6ae6w-fUNCxwFnf9XYcdVi0VjtwP9sEPeq5WU-c1uks-WrHRN0ISVuVWRM33iRrAA-iusa8GidWB_mXLzoyNXZcdlO33M-qa3aJnbeTJM4KOFYEI8vTKg1UNjuFajuw5FiF8Hvs2CsKuQiFjcG5vzHVL6L-us122X40JYcV0adAMkwqJaFzLvzT6cVb9TK_Vl4AhjlRMbeQjRg1g2iI5MgW8Izqz0TFtU8z8pqbgAtzJ5xNMlCKutaF6Xzdlux4uxB25lV7KPdA2B7J27dmv-xutArcTQAKo15a4EyARdLYnOkzvBvlrMzqfioSutBG4lHlI0wKT146xNHjw0U6SI-mnU0dpatKMhGyhTVUQ1wKJH-dOj89tjNeYzZTM94zuQHp4iwc0KIBCQ6hCeS7Xi7mBAzqgJQ71R5pe0DHDHtLOWPmkvrHHI76RiV3QCpRCzXiaF4rAgGFeaKMmIPyGOc92w81FsnbaqzcXK6nttyjpg8nD1HGnVDqtuGFSTnbyavVpqc3EXV0GNHh3t1UpFEYUntRvVwwOPAZvlyls3AtNYeXz1y-E4niWtV_8lfhBscc_ncmWHe0HX8CVuGcX_r4JpkWRzFekdSgywXhAsrs-tznAyhfrN-wN7Vdh9OwWvWMiJ4_LEjdULHw9sdj2ud_Ol2fZS_lZayokdgTJcjvq248joCA4wOrZ8JQRwAO3gzMkBK5N1Wr1T3SmQxNLu4fVPY9l3YZKxonoX5-RCRx7_RblbOoR80YhOfl1qNxS1-J-YACkcd1foULVVnxdyAgGTqfMqRqxSm0Oq9VJToHypuPVweK5jWCn3LQyw-BUKeIc7KTakGHWws-Wf0I3my-5dq3w_q7rpSA9z2j9USa3Q=w725-h966-s-no?authuser=0');
 }

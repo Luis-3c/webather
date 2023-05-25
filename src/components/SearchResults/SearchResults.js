@@ -33,10 +33,10 @@ const SearchResults = (props) => {
 			<div className="results" ref={wrapperRef}>
                 {props.results.map((r)=>{
                     return(
-                    <Link to={`/city/${r.woeid}`} key={r.title} style={{
+                    <Link to={`/city/${r.name}`} key={r.id} style={{
                         textDecoration: 'none'
                     }}>
-                        <p onClick={()=>props.setResults([])}>{r.title}</p>
+                        <p onClick={()=>props.setResults([])}>{r.name}</p>
                     </Link>
                     );
                 })}
