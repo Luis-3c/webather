@@ -13,6 +13,7 @@ const Navbar = () => {
 	const showList = useRef();
 	//const [searchInProgress, setsearchInProgress] = useState(false);
 
+	
 	// se dispara la búsqueda
 	const handleChange = (e) => {
 		setSearchText(e.target.value);
